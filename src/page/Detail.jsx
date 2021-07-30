@@ -186,7 +186,7 @@ const Detail = () => {
                     </div>
 
                     
-                    <div className="px-14 md:px-0 lg:px-4 lg:w-2/6 md:w-2/6 sm:w-2/6 mx-auto ">
+                    <div className="px-14 md:px-0 lg:px-4 lg:w-2/6 md:w-2/6 sm:w-2/6">
                         <div className="bg-white border shadow-lg py-8 px-12 w-full border-box">
                             <h1 className="text-2xl font-semibold title-font mb-2.5 text-gray-800"><span className="text-pink-400">#Rangkul</span>Mereka</h1>
                             <p className="text-base font-light title-font mx-12 lg:w-full md:w-full sm:w-3/6 sm:mx-auto text-gray-600">Untuk berdonasi silahkan isi form di bawah ini </p>
