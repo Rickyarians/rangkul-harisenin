@@ -16,7 +16,7 @@ const Detail = () => {
         <header x-data="{ open: false }">
           <div className="mx-auto flex py-12 lg:px-24 md:px-16 sm:px-8 px-8  items-center justify-between lg:justify-start">
             <a href="/">
-              <img style={{height: '40px'}} src="https://ik.imagekit.io/uqhk3wr7kix/Group_w3Z4zE6zP.png?updatedAt=1627561821890" alt="" />           
+              <img style={{height: '40px'}} src="https://ik.imagekit.io/uqhk3wr7kix/backward_2_REXDSs0Wzo.png" alt="" />           
             </a>
             <div className="flex mr-0 lg:hidden cursor-pointer">
               <svg className="w-6 h-6"  fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
