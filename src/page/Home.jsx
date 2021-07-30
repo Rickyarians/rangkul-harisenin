@@ -12,7 +12,7 @@ const Home = () => {
     class="h-full w-full border-box  transition-all duration-500 linear bg-white"
     >
 
-          <div style={{fontFamily: '"Poppins", sans-serif'}}>
+          <div>
         <header x-data="{ open: false }">
           <div className="mx-auto flex py-12 lg:px-24 md:px-16 sm:px-8 px-8  items-center justify-between lg:justify-start">
             <a href="#">
@@ -29,9 +29,9 @@ const Home = () => {
               <a href="#">                 
                 <img className="m-0 lg:hidden mb-3" style={{height: '30px'}} src="https://ik.imagekit.io/hiwbjdxpmw/logocekula_MIGJSeZtU.png" alt="" />
               </a>
-              <a className=" text-lg font-semibold leading-6 mx-0 lg:mx-5 my-4 lg:my-0 relative active" style={{color: '#1d1e3c', fontFamily: '"Poppins", sans-serif'}} href="#">Beranda</a>
-              <a className=" text-lg font-light leading-6 mx-0 lg:mx-5 my-4 lg:my-0 relative" style={{color: '#1d1e3c', fontFamily: '"Poppins", sans-serif'}} href="#">Program</a>
-              <a className=" text-lg font-light leading-6 mx-0 lg:mx-5 my-4 lg:my-0 relative" style={{color: '#1d1e3c', fontFamily: '"Poppins", sans-serif'}} href="https://cekula.id/program">Kontak</a>
+              <a className=" text-lg font-semibold leading-6 mx-0 lg:mx-5 my-4 lg:my-0 relative text-blueGray-400"  href="#">Beranda</a>
+              <a className=" text-lg font-light leading-6 mx-0 lg:mx-5 my-4 lg:my-0 relative text-blueGray-400"  href="/detail/1">Program</a>
+              <a className=" text-lg font-light leading-6 mx-0 lg:mx-5 my-4 lg:my-0 relative text-blueGray-400" href="#">Kontak</a>
             
               <div className="flex items-center justify-center w-full lg:hidden mt-3">
                
@@ -49,14 +49,14 @@ const Home = () => {
           <div className="mx-auto flex pt-12 pb-16 lg:pb-20 lg:px-24 md:px-16 sm:px-8 px-8  lg:flex-row flex-col ">
             {/* Left Column */}
             <div className="lg:flex-grow lg:w-3/5 flex flex-col lg:items-start lg:text-left mb-3 md:mb-12 lg:mb-0 items-center text-center justify-center flex">
-              <h1 className="lg:block hidden title-font sm:text-5xl lg:text-8xl text-4xl mb-8 font-semibold sm:leading-tight " style={{color: '#272E35', lineHeight: '1.2'}}>Rangkul
+              <h1 className="lg:block hidden title-font sm:text-5xl lg:text-8xl text-4xl mb-8 font-semibold sm:leading-tight text-gray-800">Rangkul
               </h1>
               
-              <p className="mb-8 leading-relaxed font-semibold text-md w-50 sm:text-5xl lg:text-2xl text-4xl" style={{color: '#F36AA7'}}>
+              <p className="mb-8 leading-relaxed font-semibold text-md w-50 sm:text-5xl lg:text-2xl text-4xl text-pink-400">
                   Fundraising Platform untuk mereka yang membutuhkan biaya
               </p>
               <div className="inline-block items-center mx-auto lg:mx-0 lg:flex justify-center lg:space-x-8 md:space-x-2  sm:space-x-3 space-x-0">
-                <button className="btn-fill-header-2-2 inline-flex font-semibold text-white  text-base rounded-full py-3 px-8 mb-4 lg:mb-0 md:mb-0 focus:outline-none hover:shadow-lg" style={{background: '#F36AA7', fontFamily: '"Poppins", sans-serif'}}>Lihat Program</button>
+                <button className="btn-fill-header-2-2 inline-flex font-semibold text-white  text-base rounded-full py-3 px-8 mb-4 lg:mb-0 md:mb-0 focus:outline-none hover:shadow-lg bg-pink-400">Lihat Program</button>
              
               </div>
             </div>
@@ -72,70 +72,158 @@ const Home = () => {
 
 
       {/*  */}
-      <div style={{fontFamily: '"Poppins", sans-serif'}}>
-        <div className="lg:px-32 md:px-8  sm:px-12 px-5 pt-20 pb-12 mx-auto">
-          {/* Title Text */}
+      <div>
+        <div className="lg:px-32 md:px-8  sm:px-12 px-5 pt-20 pb-12 mx-auto  mb-6">
+          
           <div className="flex flex-col text-center w-full mb-12">
-            <h1 className="text-4xl font-semibold title-font mb-2.5" style={{color: '#121212'}}><span style={{color: '#F36AA7'}}>#Rangkul</span>Mereka</h1>
-            <p className="text-base font-light title-font mx-12 lg:w-full md:w-full sm:w-3/6 sm:mx-auto" style={{color: '#121212'}}>Bantu Mereka agar bisa sekolah dan meraih cita cita nya</p>
+            <h1 className="text-4xl font-semibold title-font mb-2.5 text-gray-800"><span className="text-pink-400">#Rangkul</span>Mereka</h1>
+            <p className="text-base font-light title-font mx-12 lg:w-full md:w-full sm:w-3/6 sm:mx-auto text-gray-600">Bantu Mereka agar bisa sekolah dan meraih cita cita nya</p>
           </div>
-          {/* 3-Column */}
+       
           <div className="flex lg:flex-row flex-col -m-4 mt-12">
-            <div className="px-14 md:px-0 lg:px-4 lg:w-1/4 md:w-1/4 sm:w-4/6 mx-auto">
-              <div className="flex rounded-lg h-full lg:pt-8 lg:pb-8 md:pt-8 md:pb-8 pt-4 pb-12 flex-col">
-                <div className="items-center text-center">
-                  <div className="inline-flex items-center justify-center rounded-full  mb-6 ">
-                    <img style={{height: '100px'}} src="https://ik.imagekit.io/hiwbjdxpmw/smartwatch_1_aM0a-hacW.png" alt="" />                 
-                  </div>
+          <div className="px-14 md:px-0 lg:px-4 lg:w-1/3 md:w-1/3 sm:w-4/6 mx-auto">
+                  <div>
+              <div class="rounded-lg overflow-hidden bg-white shadow-xl">
+                <div class="relative overflow-hidden pb-60">
+                  <img
+                    class="absolute h-full w-full object-cover object-center"
+                    src="https://ik.imagekit.io/uqhk3wr7kix/image_9_W5okuV2nW.png?updatedAt=1627561823080"
+                    alt=""
+                  />
                 </div>
-                <div className="flex-grow">
-                  <h4 className="font-medium text-center text-2xl mb-2.5" style={{color: '#121212'}}>Jam Belajar Fleksibel</h4>
-                  <p className="lg-show-content-2-2 leading-relaxed text-base text-center tracking-wide " style={{color: '#565656'}}>Jam belajar dilaksanakan relatif fleksibel, kamu dapat belajar sesuatu hal baru kapanpun.</p>
-                  <p className="lg-hide-content-2-2 block leading-relaxed text-base text-center tracking-wide " style={{color: '#565656'}}>Jam belajar dilaksanakan relatif fleksibel, kamu dapat belajar sesuatu hal baru kapanpun.</p>
+                <div class="relative ">
+                  <div class="py-6 px-4">
+                    <h2 class="text-3xl font-bold text-gray-800">Bantu irfan kuliah</h2>
+                    <p className="my-2 text-xs font-light  text-gray-600 ">CTO doang tapi nggak sarjana, KENTANG !</p>
+                  
+                    <div className="mt-2 mb-2">
+                      <div className="">
+                          <span className="text-xl font-bold text-blue-400 ">Rp. 100.000 </span>
+                        <span className="px-2 text-grey-100 text-xs font-light">Terkumpul Dari Rp 400.0000</span>
+                      </div>
+                    
+                    </div>
+
+                    <div className="relative pt-1">
+                      <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
+                        <div style={{ width: "40%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500"></div>
+                      </div>
+                    </div>
+
+                    <div className="flex lg:flex-row flex-col -m-4 mt-2 mb-2">
+                      <div className="md:px-0 lg:px-4 lg:w-1/2 md:w-1/2 sm:w-3/6 mx-auto">
+                      <h3 class="text-2xl font-bold text-gray-800">100  <span className="text-sm font-light text-black-200 ">Donasi</span></h3>
+                      </div>
+                      <div className="md:px-0 lg:px-4 lg:w-1/2 md:w-1/2 sm:w-3/6 mx-auto text-right">
+                      <h3 class="text-2xl font-bold text-gray-800">23  <span className="text-sm font-light text-black-200 ">Hari lagi</span></h3>
+                      </div>
+                    </div>
+
+                    
+
+                  
+                  
+                    <button className=" font-semibold text-white text-base w-full rounded-lg py-3 my-6 px-8 mb-4 lg:mb-0 md:mb-0 focus:outline-none hover:shadow-lg bg-pink-400">Donasi Sekarang!</button>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="px-14 md:px-0 lg:px-4 lg:w-1/4 md:w-1/4 sm:w-4/6 mx-auto">
-              <div className="flex rounded-lg h-full lg:pt-8 lg:pb-8 md:pt-8 md:pb-8 pt-12 pb-12 flex-col">
-                <div className="items-center text-center ">
-                  <div className="inline-flex items-center justify-center rounded-full mb-6 ">
-                    <img style={{height: '100px'}} src="https://ik.imagekit.io/hiwbjdxpmw/speaker_1_GwZriaYsHsJ.png" alt="" />                                  
-                  </div>
+            </div>
+            <div className="px-14 md:px-0 lg:px-4 lg:w-1/3 md:w-1/3 sm:w-4/6 mx-auto">
+                  <div>
+              <div class="rounded-lg overflow-hidden bg-white shadow-xl">
+                <div class="relative overflow-hidden pb-60">
+                  <img
+                    class="absolute h-full w-full object-cover object-center"
+                    src="https://ik.imagekit.io/uqhk3wr7kix/image_9_W5okuV2nW.png?updatedAt=1627561823080"
+                    alt=""
+                  />
                 </div>
-                <div className="flex-grow">
-                  <h4 className="font-medium text-center text-2xl mb-2.5" style={{color: '#121212'}}>Pemateri Berpengalaman</h4>
-                  <p className="lg-show-content-2-2 leading-relaxed text-base text-center tracking-wide " style={{color: '#565656'}}>Materi dibuat dan dibawakan oleh mereka yang ahli dan berpengalam di bidangnya</p>
-                  <p className="lg-hide-content-2-2 leading-relaxed text-base text-center tracking-wide " style={{color: '#565656'}}>Materi dibuat dan dibawakan oleh mereka yang ahli dan berpengalam di bidangnya</p>
+                <div class="relative ">
+                  <div class="py-6 px-4">
+                    <h2 class="text-3xl font-bold text-gray-800">Bantu irfan kuliah</h2>
+                    <p className="my-2 text-xs font-light  text-gray-600 ">CTO doang tapi nggak sarjana, KENTANG !</p>
+                  
+                    <div className="mt-2 mb-2">
+                      <div className="">
+                          <span className="text-xl font-bold text-blue-400 ">Rp. 100.000 </span>
+                        <span className="px-2 text-grey-100 text-xs font-light">Terkumpul Dari Rp 400.0000</span>
+                      </div>
+                    
+                    </div>
+
+                    <div className="relative pt-1">
+                      <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
+                        <div style={{ width: "40%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500"></div>
+                      </div>
+                    </div>
+
+                    <div className="flex lg:flex-row flex-col -m-4 mt-2 mb-2">
+                      <div className="md:px-0 lg:px-4 lg:w-1/2 md:w-1/2 sm:w-3/6 mx-auto">
+                      <h3 class="text-2xl font-bold text-gray-800">100  <span className="text-sm font-light text-black-200 ">Donasi</span></h3>
+                      </div>
+                      <div className="md:px-0 lg:px-4 lg:w-1/2 md:w-1/2 sm:w-3/6 mx-auto text-right">
+                      <h3 class="text-2xl font-bold text-gray-800">23  <span className="text-sm font-light text-black-200 ">Hari lagi</span></h3>
+                      </div>
+                    </div>
+
+                    
+
+                  
+                  
+                    <button className=" font-semibold text-white text-base w-full rounded-lg py-3 my-6 px-8 mb-4 lg:mb-0 md:mb-0 focus:outline-none hover:shadow-lg bg-pink-400">Donasi Sekarang!</button>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="px-14 md:px-0 lg:px-4 lg:w-1/4 md:w-1/4 sm:w-4/6 mx-auto">
-              <div className="flex rounded-lg h-full lg:pt-8 lg:pb-8 md:pt-8 md:pb-8 pt-12 pb-6 flex-col">
-                <div className="items-center text-center ">
-                  <div className="inline-flex items-center justify-center rounded-full mb-6 ">
-                    <img style={{height: '100px'}} src="https://ik.imagekit.io/hiwbjdxpmw/verified_1_dAjmHmD6X.png" alt="" />                               
-                  </div>
+            </div>
+            <div className="px-14 md:px-0 lg:px-4 lg:w-1/3 md:w-1/3 sm:w-4/6 mx-auto">
+                  <div>
+              <div class="rounded-lg overflow-hidden bg-white shadow-xl">
+                <div class="relative overflow-hidden pb-60">
+                  <img
+                    class="absolute h-full w-full object-cover object-center"
+                    src="https://ik.imagekit.io/uqhk3wr7kix/image_9_W5okuV2nW.png?updatedAt=1627561823080"
+                    alt=""
+                  />
                 </div>
-                <div className="flex-grow">
-                  <h4 className="font-medium text-center text-2xl mb-2.5 " style={{color: '#121212'}}>Metode Belajar Efektif</h4>
-                  <p className="lg-show-content-2-2 leading-relaxed text-base text-center tracking-wide " style={{color: '#565656'}}>Metode belajar dengan module yang interaktif disertai video</p>
-                  <p className="lg-hide-content-2-2 leading-relaxed text-base text-center tracking-wide " style={{color: '#565656'}}>Metode belajar dengan module yang interaktif disertai video</p>
+                <div class="relative ">
+                  <div class="py-6 px-4">
+                    <h2 class="text-3xl font-bold text-gray-800">Bantu irfan kuliah</h2>
+                    <p className="my-2 text-xs font-light  text-gray-600 ">CTO doang tapi nggak sarjana, KENTANG !</p>
+                  
+                    <div className="mt-2 mb-2">
+                      <div className="">
+                          <span className="text-xl font-bold text-blue-400 ">Rp. 100.000 </span>
+                        <span className="px-2 text-grey-100 text-xs font-light">Terkumpul Dari Rp 400.0000</span>
+                      </div>
+                    
+                    </div>
+
+                    <div className="relative pt-1">
+                      <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-pink-200">
+                        <div style={{ width: "40%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500"></div>
+                      </div>
+                    </div>
+
+                    <div className="flex lg:flex-row flex-col -m-4 mt-2 mb-2">
+                      <div className="md:px-0 lg:px-4 lg:w-1/2 md:w-1/2 sm:w-3/6 mx-auto">
+                      <h3 class="text-2xl font-bold text-gray-800">100  <span className="text-sm font-light text-black-200 ">Donasi</span></h3>
+                      </div>
+                      <div className="md:px-0 lg:px-4 lg:w-1/2 md:w-1/2 sm:w-3/6 mx-auto text-right">
+                      <h3 class="text-2xl font-bold text-gray-800">23  <span className="text-sm font-light text-black-200 ">Hari lagi</span></h3>
+                      </div>
+                    </div>
+
+                    
+
+                  
+                  
+                    <button className=" font-semibold text-white text-base w-full rounded-lg py-3 my-6 px-8 mb-4 lg:mb-0 md:mb-0 focus:outline-none hover:shadow-lg bg-pink-400">Donasi Sekarang!</button>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="px-14 md:px-0 lg:px-4 lg:w-1/4 md:w-1/4 sm:w-4/6 mx-auto">
-              <div className="flex rounded-lg h-full lg:pt-8 lg:pb-8 md:pt-8 md:pb-8 pt-12 pb-6 flex-col">
-                <div className="items-center text-center ">
-                  <div className="inline-flex items-center justify-center rounded-full mb-6 ">
-                    <img style={{height: '100px'}} src="https://ik.imagekit.io/hiwbjdxpmw/verified_1_dAjmHmD6X.png" alt="" />                               
-                  </div>
-                </div>
-                <div className="flex-grow">
-                  <h4 className="font-medium text-center text-2xl mb-2.5 " style={{color: '#121212'}}>Metode Belajar Efektif</h4>
-                  <p className="lg-show-content-2-2 leading-relaxed text-base text-center tracking-wide " style={{color: '#565656'}}>Metode belajar dengan module yang interaktif disertai video</p>
-                  <p className="lg-hide-content-2-2 leading-relaxed text-base text-center tracking-wide " style={{color: '#565656'}}>Metode belajar dengan module yang interaktif disertai video</p>
-                </div>
-              </div>
             </div>
           </div>
    
@@ -145,7 +233,7 @@ const Home = () => {
 
       {/*  */}
       <section className="h-full pt-20 pb-12 lg:px-24 md:px-16 sm:px-8 px-4 bg-white">
-      <footer className="h-full" style={{fontFamily: '"Poppins", sans-serif'}}>
+      <footer className="h-full" >
         <div className="pb-24 mx-auto">
           <div className="grid lg:grid-cols-4 md:grid-cols-2">
             <div className>
@@ -237,13 +325,6 @@ const Home = () => {
                 </defs>
               </svg>
             </div>
-            <nav className="mx-auto flex flex-wrap items-center text-base justify-center">
-              {/* <a class="mr-5 footer-link-footer-2-2">Terms of Service</a>
-              <span class="mr-5">|</span>
-              <a class="mr-5 footer-link-footer-2-2">Privacy Policy</a>
-              <span class="mr-5">|</span>
-              <a class="mr-5 footer-link-footer-2-2">Licenses</a> */}
-            </nav>
            
           </div>
         </div>
