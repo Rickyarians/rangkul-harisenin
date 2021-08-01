@@ -1,23 +1,101 @@
 import { useHistory } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-
+import { useParams, Link} from 'react-router-dom'
+import client from './../service/axios'
+import moment from 'moment';
 
 const Detail = () => {
     const history = useHistory()
+    const [projects, setProjects] = useState([])
+    const [listdonasi, setListDonasi] = useState([])
 
+    const {id} = useParams()
+
+    console.log(id)
+
+    let [data, setData] = useState({
+        name: '',
+        amount: 0
+    })
+
+    // tangkap nilai input yang di dalam form
+    const handleFunction = (e) => {
+      console.log(e.target.value)
+      setData({
+          ...data,
+          [e.target.name] : e.target.value
+      })
+
+      console.log(data)
+  }
+
+  const getListDonasi = () => {
+    client.get(`/list/projects/${id}`)
+    .then (function (response) {
+        console.log(response.data)
+       setListDonasi(response.data.data.donations)
+     
+    }).catch (function(error) {
+         console.log(error);
+         alert("data tidak ditemukan");
+
+    })
+   }
+  
+   // masukkan nilai ke dalam redux melalui dispatch
+   const tambahDonasi = () => {
+       console.log('data yang dikirim', data)
+
+       // manggil dispatch
+       client.post(`/transaction/donas/${id}`, data)
+      .then (function (response) {
+          console.log(response.data)
+          alert('Berhasil Donasi')
+
+          getListDonasi()
+        
+      }).catch (function(error) {
+           console.log(error);
+           alert("data tidak ditemukan");
+
+      })
+      
+   }
+
+
+    useEffect(() => {
+      client.get(`/list/projects/${id}`)
+      .then (function (response) {
+          console.log(response.data)
+         setProjects(response.data.data)
+         setListDonasi(response.data.data.donations)
+       
+      }).catch (function(error) {
+           console.log(error);
+           alert("data tidak ditemukan");
+
+      })
+    }, [])
+
+    
+
+
+    console.log(projects)
 
     return (
+      
         <>
+        
             <section
-    class="h-full w-full border-box bg-white shadow-lg  transition-all duration-500 linear bg-white"
+    className="h-full w-full border-box bg-white shadow-lg  transition-all duration-500 linear bg-white"
     >
 
           <div>
         <header x-data="{ open: false }">
           <div className="mx-auto flex py-12 lg:px-24 md:px-16 sm:px-8 px-8  items-center justify-between lg:justify-start">
-            <a href="/">
+              <Link to='/Home'>
               <img style={{height: '40px'}} src="https://ik.imagekit.io/uqhk3wr7kix/backward_2_REXDSs0Wzo.png" alt="" />           
-            </a>
+              </Link>
             <div className="flex mr-0 lg:hidden cursor-pointer">
               <svg className="w-6 h-6"  fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -67,19 +145,19 @@ const Detail = () => {
                 <div class="relative overflow-hidden">
                   <img
                     class="h-full w-full object-cover object-center"
-                    src="https://ik.imagekit.io/uqhk3wr7kix/image_9_W5okuV2nW.png?updatedAt=1627561823080"
+                    src={`${projects.image}`}
                     alt=""
                   />
                 </div>
                 <div class="relative ">
                   <div class="py-6 px-4">
-                    <h1 class="text-4xl font-bold text-gray-800">Bantu irfan kuliah</h1>
+                    <h1 class="text-4xl font-bold text-gray-800">{projects.project_name}</h1>
                    
                   
                     <div className="mt-2 mb-2">
                       <div className="">
-                          <span className="text-2xl font-bold text-blue-400 ">Rp. 100.000 </span>
-                        <span className="px-2 text-grey-100 text-md font-light">Terkumpul Dari Rp 400.0000</span>
+                          <span className="text-2xl font-bold text-blue-400 ">Rp. {new Number(projects.current_amount).toLocaleString('id-ID')}</span>
+                        <span className="px-2 text-grey-100 text-md font-light">Terkumpul Dari Rp. {new Number(projects.goal_amount).toLocaleString('id-ID')}</span>
                       </div>
                     
                     </div>
@@ -92,7 +170,7 @@ const Detail = () => {
 
                     <div className="flex lg:flex-row flex-col -m-4 mt-3 mb-3">
                       <div className="md:px-0 lg:px-4 lg:w-1/2 md:w-1/2 sm:w-3/6 mx-auto">
-                      <h3 class="text-3xl font-bold text-gray-800">100  <span className="text-sm font-light text-black-200 ">Donasi</span></h3>
+                      <h3 class="text-3xl font-bold text-gray-800">{projects.donations ? projects.donations.length : 0}    <span className="text-sm font-light text-black-200 ">Donasi</span></h3>
                       </div>
                       <div className="md:px-0 lg:px-4 lg:w-1/2 md:w-1/2 sm:w-3/6 mx-auto text-right">
                       <h3 class="text-3xl font-bold text-gray-800">23  <span className="text-sm font-light text-black-200 ">Hari lagi</span></h3>
@@ -101,7 +179,7 @@ const Detail = () => {
 
 
 
-                    <p className="my-4 text-sm font-light">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                    <p className="my-4 text-sm font-light">{projects.short_description ? projects.short_description : ''}</p>
                     
 
                   
@@ -117,20 +195,10 @@ const Detail = () => {
                         <div class="py-6 px-4">
                             <h1 class="text-2xl font-medium text-gray-800">Deksripsi</h1>
                             <p className="font-light text-sm my-4">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                            standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised 
-                            in the 1960s with the release of Letraset sheets containing 
-                            Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                              {projects.description}
                             </p>
 
-                            <p className="font-light text-sm my-4">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                            standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised 
-                            in the 1960s with the release of Letraset sheets containing 
-                            Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
-                            </p>
+                          
                         </div>
                         </div>
 
@@ -138,47 +206,33 @@ const Detail = () => {
                         
                         <div class="py-6 px-4">
                             <h1 class="text-2xl font-medium text-gray-800 mb-2 mt-2">Daftar Orang Baik</h1>
-                            <div className="bg-white border shadow-lg w-full border-box rounded-md mt-2 mb-2 ">
+                            {listdonasi ? listdonasi.map((item, index) => {
+                              return (
+                                <div className="bg-white border shadow-lg w-full border-box rounded-md mt-2 mb-2 ">
                                 <div class="py-6 px-4">
                                 <div className="flex lg:flex-row flex-col ">
                                     <div className="md:px-0 lg:px-4 lg:w-2/4 md:w-6/6 sm:w-3/6 mx-auto">
                                     <h3 className="font-medium">
-                                        Ricky Ariansyah
+                                        {item.name ? item.name : 'uknown'}
                                         </h3>
                                         <p className="font-grey-300 text-sm">
-                                        31 Juli 2021     
+                                        {moment(item.createdAt).format('DD MMM YYYY')}   
                                         </p>
                                    </div>
                                    <div className="md:px-0 lg:px-4 lg:w-2/4 md:w-3/6 sm:w-6/6 mx-auto text-right">
                                     <h1 className="font-medium text-2xl text-pink-400">
-                                        Rp. 100.000
+                                      Rp. {new Number(item.amount).toLocaleString('id-ID')}
                                         </h1>
                                    </div>
                                    </div>
                                 </div>
                                 
                             </div>
+                              )
+                            }) : ''}
+                            
 
-                            <div className="bg-white border shadow-lg w-full border-box rounded-md mt-2 mb-2 ">
-                                <div class="py-6 px-4">
-                                <div className="flex lg:flex-row flex-col ">
-                                    <div className="md:px-0 lg:px-4 lg:w-2/4 md:w-6/6 sm:w-3/6 mx-auto">
-                                    <h3 className="font-medium">
-                                        Ricky Ariansyah
-                                        </h3>
-                                        <p className="font-grey-300 text-sm">
-                                        31 Juli 2021     
-                                        </p>
-                                   </div>
-                                   <div className="md:px-0 lg:px-4 lg:w-2/4 md:w-3/6 sm:w-6/6 mx-auto text-right">
-                                    <h1 className="font-medium text-2xl text-pink-400">
-                                        Rp. 100.000
-                                        </h1>
-                                   </div>
-                                   </div>
-                                </div>
-                                
-                            </div>
+                           
                         </div>
                         </div>
 
@@ -191,28 +245,34 @@ const Detail = () => {
                             <h1 className="text-2xl font-semibold title-font mb-2.5 text-gray-800"><span className="text-pink-400">#Rangkul</span>Mereka</h1>
                             <p className="text-base font-light title-font mx-12 lg:w-full md:w-full sm:w-3/6 sm:mx-auto text-gray-600">Untuk berdonasi silahkan isi form di bawah ini </p>
 
-                            <div class="w-full mt-4">
-                                <form class="">
-                                    <div class="mb-4">
-                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="nama">
+                            <div className="w-full mt-4">
+                               
+                                    <div className="mb-4">
+                                    <label className="block text-gray-700 text-sm font-bold mb-2">
                                         Nama
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nama" type="text" placeholder="Nama lengkap" />
+                                    <input 
+                                    onChange={(e) => handleFunction(e)}
+                                    className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name="name" type="text" placeholder="Nama lengkap" />
                                     </div>
-                                    <div class="mb-6">
-                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="donasi">
+                                    <div className="mb-6">
+                                    <label className="block text-gray-700 text-sm font-bold mb-2">
                                         Nilai Donasi
                                     </label>
-                                    <input class="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="donasi" placeholder="Rp. 100.000" />
+                                    <input 
+                                    onChange={(e) => handleFunction(e)}
+                                    className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="amount" name="amount" placeholder="Rp. 100.000" />
                                    
                                     </div>
-                                    <div class="flex items-center justify-between">
-                                    <button class="bg-pink-400 hover:bg-pink-600 text-white font-bold py-3 px-4 w-full rounded-md focus:outline-none focus:shadow-outline" type="button">
+                                    <div className="flex items-center justify-between">
+                                    <button  
+                                    onClick={() => tambahDonasi()}
+                                    className="bg-pink-400 hover:bg-pink-600 text-white font-bold py-3 px-4 w-full rounded-md focus:outline-none focus:shadow-outline" type="button">
                                        Kirim Donasi
                                     </button>
                                     
                                     </div>
-                                </form>
+                                
                                 
                                 </div>
                         
